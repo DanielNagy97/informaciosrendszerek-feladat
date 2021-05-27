@@ -19,11 +19,11 @@
 
     <mat-form-field appearance="fill">
         <mat-label>Password</mat-label>
-        <input matInput [(ngModel)]="newuser.password">
+        <input type="password" matInput [(ngModel)]="newuser.password">
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Password2</mat-label>
-        <input matInput [(ngModel)]="newuser.password2">
+        <input type="password" matInput [(ngModel)]="newuser.password2">
     </mat-form-field>
     <button mat-button (click)="register()"> Register </button>
 
