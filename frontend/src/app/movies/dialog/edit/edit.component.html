@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>Edit movie</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput [(ngModel)]="data.title">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Director</mat-label>
+    <input matInput [(ngModel)]="data.director">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Genre</mat-label>
+    <input matInput [(ngModel)]="data.genre">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Release date</mat-label>
+    <input matInput [matDatepicker]="datepicker" [(ngModel)]="data.releaseDate">
+    <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+    <mat-datepicker #datepicker>
+      <mat-datepicker-actions>
+        <button mat-button matDatepickerCancel>Cancel</button>
+        <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+      </mat-datepicker-actions>
+    </mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Age rating</mat-label>
+    <input type="number" matInput [(ngModel)]="data.ageRating">
+  </mat-form-field>
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Story</mat-label>
+    <textarea matInput [(ngModel)]="data.storyLine"></textarea>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button *ngIf="data.id != -1" mat-button (click)="updateMovie()">Save</button>
+  <button *ngIf="data.id == -1" mat-button (click)="createMovie()">Post</button>
+  <button mat-button (click)="close()">Close</button>
+</div>

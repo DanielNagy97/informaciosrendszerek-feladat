@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Edit movie instance</h1>
+<div>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Movie</mat-label>
+    <mat-select [(ngModel)]="data.movie.movie">
+      <mat-option *ngFor="let movie of data.listOfMovies" [value]="movie.id">{{movie.title}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Format</mat-label>
+    <input matInput [(ngModel)]="data.movie.format">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Price</mat-label>
+    <input type="number" matInput [(ngModel)]="data.movie.price">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Available</mat-label>
+    <mat-select [(ngModel)]="data.movie.isAvailable">
+      <mat-option [value]="true">true</mat-option>
+      <mat-option [value]="false">false</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+
+<div mat-dialog-actions>
+  <button *ngIf="data.movie.id != -1" mat-button (click)="updateInstance()">Save</button>
+  <button *ngIf="data.movie.id == -1" mat-button (click)="createInstance()">Post</button>
+  <button mat-button (click)="close()">Close</button>
+</div>

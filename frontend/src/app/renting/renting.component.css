@@ -1,0 +1,26 @@
+
+  
+h2{
+  text-align: center;
+}
+
+.cards{
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+.example-card {
+  max-width: 300px;
+  margin: 30px;
+  display: inline-block;
+  text-align: left;
+}
+.example-card:hover {
+  transform: scale(1.05);
+}
+  
+.example-header-image {
+  background-image: url('https://media.istockphoto.com/photos/popcorn-and-clapperboard-picture-id1191001701?k=6&m=1191001701&s=612x612&w=0&h=zQ6vP0lTy7CnXu-HbTZj8a20XcXc2x--lS0WtUt9c-A=');
+  background-size: cover;
+}

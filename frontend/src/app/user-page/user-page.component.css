@@ -1,0 +1,13 @@
+.example-card {
+  max-width: 350px;
+  margin: 30px;
+  display: inline-block;
+}
+.example-card:hover {
+  transform: scale(1.05);
+}
+
+.example-header-image {
+  background-image: url('https://static7.depositphotos.com/1146092/791/i/600/depositphotos_7910381-stock-photo-dog-computer.jpg');
+  background-size: cover;
+}

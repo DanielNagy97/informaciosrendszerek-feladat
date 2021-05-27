@@ -1,0 +1,49 @@
+<h2>Movie instances</h2>
+
+<mat-form-field appearance="fill">
+  <mat-label>Avability</mat-label>
+  <mat-select [(ngModel)]="filter.available">
+    <mat-option [value]="undefined">all</mat-option>
+    <mat-option [value]="true">available</mat-option>
+    <mat-option [value]="false">not available</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <mat-label>Film</mat-label>
+  <mat-select [(ngModel)]="filter.movie">
+    <mat-option [value]="undefined">all</mat-option>
+    <mat-option *ngFor="let movie of listOfMovies" value={{movie.id}}>{{movie.title}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<button mat-button (click)="filterInstances()">Filter</button>
+<br>
+<button mat-button (click)="newInstance()">Add new instance</button>
+
+<br>
+<div class="cards">
+<mat-card *ngFor="let movie of availableMovies" class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{movie.movieTitle}}</mat-card-title>
+    <mat-card-subtitle>{{movie.format}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://static4.depositphotos.com/1015146/304/i/600/depositphotos_3046678-stock-photo-blank-case-and-dvd.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <h3>
+      Price: {{movie.price}}
+    </h3>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button [disabled]="!movie.isAvailable" (click)="rentMovie(movie.id)">Rent it</button>
+    <button mat-icon-button color="primary" (click)="editInstance(movie)">
+      <mat-icon aria-label="Edit">edit</mat-icon>
+    </button>
+    <button mat-icon-button color="accent" (click)="deleteInstance(movie)">
+      <mat-icon aria-label="Delete">delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
+</div>
+<br>

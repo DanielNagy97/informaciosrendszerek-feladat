@@ -1,0 +1,30 @@
+<div class=registerbox>
+    <h2>Registration</h2>
+    <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="newuser.username">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Firstname</mat-label>
+        <input matInput [(ngModel)]="newuser.first_name">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Lastname</mat-label>
+        <input matInput [(ngModel)]="newuser.last_name">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="newuser.email">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput [(ngModel)]="newuser.password">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Password2</mat-label>
+        <input matInput [(ngModel)]="newuser.password2">
+    </mat-form-field>
+    <button mat-button (click)="register()"> Register </button>
+
+</div>

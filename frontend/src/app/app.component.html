@@ -1,0 +1,52 @@
+<mat-toolbar class="toolbar" color="primary">
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon"
+    aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Video Rental Shop</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button [matMenuTriggerFor]="usermenu" class="example-icon"
+    aria-label="Example icon-button with share icon">
+    <mat-icon>account_box</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+  <button routerLink="/" mat-menu-item>
+    <mat-icon>home</mat-icon>
+    <span>Home</span>
+  </button>
+  <button routerLink="/movies" mat-menu-item>
+    <mat-icon>local_movies</mat-icon>
+    <span>Movies</span>
+  </button>
+  <button routerLink="/renting" mat-menu-item>
+    <mat-icon>album</mat-icon>
+    <span>Renting</span>
+  </button>
+</mat-menu>
+
+<mat-menu #usermenu="matMenu">
+  <button routerLink="/user" mat-menu-item>
+    <mat-icon>face</mat-icon>
+    <span>Profile</span>
+  </button>
+  <button routerLink="/rentings-page" mat-menu-item>
+    <mat-icon> list_alt</mat-icon>
+    <span>Rentings</span>
+  </button>
+  <button (click)="logout()" mat-menu-item>
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-menu>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+
+<mat-toolbar class="footer" color="primary">
+  <span>Információsrendszerek integrálása feladat</span>
+  <span class="example-spacer"></span>
+  <span>Nagy Dániel Zoltán JJ181J (2021)</span>
+</mat-toolbar>
