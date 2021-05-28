@@ -22,7 +22,7 @@ export class DeleteComponent implements OnInit {
   }
 
   close = () => {
-    this.dialogRef.close()
+    this.dialogRef.close();
   }
 
   submit = () => {
@@ -33,18 +33,16 @@ export class DeleteComponent implements OnInit {
   deleteMovie = () => {
     this.api.deleteInstance(this.data.id).subscribe(
       data => {
-        //console.log(data);
+
       },
       error => {
-        //console.log(error);
         this.snackbar.open(error.error.detail, 'OK', {
           horizontalPosition: "right",
           verticalPosition: "top",
           duration: 2000
         });
-        //console.log(error);
       }
-    )
+    );
   }
 
 }

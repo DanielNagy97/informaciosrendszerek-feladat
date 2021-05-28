@@ -16,7 +16,7 @@ export class RentComponent implements OnInit {
     movieInstance: this.data,
     deadLine: new Date(),
     closed: false
-  }
+  };
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: number,
     private dialogRef: MatDialogRef<RentComponent>,
@@ -26,11 +26,11 @@ export class RentComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //console.log(this.data)
+
   }
 
   close = () => {
-    this.dialogRef.close()
+    this.dialogRef.close();
   }
 
   createRenting = () => {
@@ -38,17 +38,16 @@ export class RentComponent implements OnInit {
 
     this.api.rentMovie(this.newRenting).subscribe(
       data => {
-        //console.log(data);
+
       },
       error => {
-        //console.log(error);
         this.snackbar.open(error.error.detail, 'OK', {
           horizontalPosition: "right",
           verticalPosition: "top",
           duration: 2000
         });
       }
-    )
+    );
     this.close();
   }
 }

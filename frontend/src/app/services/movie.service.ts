@@ -10,7 +10,7 @@ export class MovieService {
   httpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
     "Authorization": "Token " + localStorage.getItem("token")
-  })
+  });
 
   constructor(private http: HttpClient) { }
 
@@ -32,7 +32,7 @@ export class MovieService {
       genre: movie.genre,
       releaseDate: new Date(movie.releaseDate).toISOString().substring(0, 10),
       ageRating: movie.ageRating
-    }
+    };
     return this.http.put(this.baseurl + "viewset/movie/" + movie.id + "/",
       body, { headers: this.httpHeaders });
   }
@@ -45,7 +45,7 @@ export class MovieService {
       genre: movie.genre,
       releaseDate: new Date(movie.releaseDate).toISOString().substring(0, 10),
       ageRating: movie.ageRating
-    }
+    };
 
     return this.http.post(this.baseurl + "viewset/movie/",
       body, { headers: this.httpHeaders });

@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
     email: "",
     first_name: "",
     last_name: ""
-  }
+  };
   constructor(
     private api: RegisterService,
     private snackbar: MatSnackBar,
@@ -32,13 +32,8 @@ export class RegisterComponent implements OnInit {
   }
 
   register = () => {
-    //console.log("register")
-
     this.api.register(this.newuser).subscribe(
       data => {
-        //Setting the user token according to login...
-        //vagy átirányítás
-        //console.log(data)
         window.location.reload();
       },
       error => {
@@ -47,9 +42,8 @@ export class RegisterComponent implements OnInit {
           verticalPosition: "top",
           duration: 2000
         });
-        //console.log(error);
       }
-    )
+    );
 
   }
 

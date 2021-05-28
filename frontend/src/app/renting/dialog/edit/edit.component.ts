@@ -21,11 +21,11 @@ export class EditComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //console.log(this.data)
+
   }
 
   close = () => {
-    this.dialogRef.close()
+    this.dialogRef.close();
   }
 
   updateInstance = () => {
@@ -33,10 +33,8 @@ export class EditComponent implements OnInit {
     this.api.updateInstance(this.data.movie).subscribe(
       data => {
         this.data = data
-        //console.log(data);
       },
       error => {
-        //console.log(error);
         this.snackbar.open(error.error.detail, 'OK', {
           horizontalPosition: "right",
           verticalPosition: "top",
@@ -44,7 +42,7 @@ export class EditComponent implements OnInit {
         });
 
       }
-    )
+    );
     this.close();
 
   }
@@ -52,7 +50,7 @@ export class EditComponent implements OnInit {
   createInstance = () => {
     this.api.createInstance(this.data.movie).subscribe(
       data => {
-        //console.log(data);
+
       },
       error => {
         console.log(error);
@@ -63,7 +61,7 @@ export class EditComponent implements OnInit {
         });
 
       }
-    )
+    );
     this.close();
   }
 

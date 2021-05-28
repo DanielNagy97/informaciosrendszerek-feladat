@@ -53,7 +53,6 @@ export class MoviesComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.id = params.get('id');
     });
-    //console.log(this.id);
 
     if (this.id != "") {
       this.getOneMovie();
@@ -64,10 +63,8 @@ export class MoviesComponent implements OnInit {
     this.api.getAllMovies().subscribe(
       data => {
         this.movies = data;
-        //console.log(this.movies);
       },
       error => {
-        //console.log(error);
         this.snackbar.open(error.error.detail, 'OK', {
           horizontalPosition: "right",
           verticalPosition: "top",
@@ -80,8 +77,7 @@ export class MoviesComponent implements OnInit {
   getOneMovie = () => {
     this.api.getOneMovie(this.id).subscribe(
       data => {
-        this.startEdit(data)
-        //console.log(this.selectedMovie);
+        this.startEdit(data);
       },
       error => {
         console.log(error);
@@ -102,9 +98,8 @@ export class MoviesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(res => {
-      //console.log(res.data);
       this.getMovies();
-      this.selectedMovie = { id: -1, title: '', director: '', storyLine: '', genre: '', releaseDate: new Date(), ageRating: 0 }
+      this.selectedMovie = { id: -1, title: '', director: '', storyLine: '', genre: '', releaseDate: new Date(), ageRating: 0 };
     });
   }
 
@@ -114,7 +109,6 @@ export class MoviesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(res => {
-      //console.log(res.data);
       this.getMovies();
       this.selectedMovie = {
         id: -1,
@@ -124,12 +118,12 @@ export class MoviesComponent implements OnInit {
         genre: '',
         releaseDate: new Date(),
         ageRating: 0
-      }
+      };
     });
   }
 
   navigateToInstances = (movieID: number) => {
-    this.router.navigateByUrl('renting/?movie=' + movieID)
+    this.router.navigateByUrl('renting/?movie=' + movieID);
   }
 
 }

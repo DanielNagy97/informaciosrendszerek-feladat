@@ -39,8 +39,8 @@ export class RentingComponent implements OnInit {
 
   availableMovies: MovieInstance[] = [];
 
-  listOfMovies: Movie[] = []
-  filter: any = { movie: undefined, available: undefined }
+  listOfMovies: Movie[] = [];
+  filter: any = { movie: undefined, available: undefined };
 
   queryParams: any;
 
@@ -54,7 +54,6 @@ export class RentingComponent implements OnInit {
   ) {
 
     this.route.queryParams.subscribe(params => {
-      //console.log(params);
       this.queryParams = params;
     });
 
@@ -71,9 +70,9 @@ export class RentingComponent implements OnInit {
       this.filter.movie = this.queryParams.movie;
     }
 
-    this.getInstances()
+    this.getInstances();
 
-    this.getAllMovies()
+    this.getAllMovies();
 
   }
 
@@ -91,34 +90,28 @@ export class RentingComponent implements OnInit {
   }
 
   rentMovie = (movieID: number) => {
-
-    //console.log(movieID)
     let dialogRef = this.dialog.open(RentComponent, {
       data: movieID
     });
 
     dialogRef.afterClosed().subscribe(res => {
-      //console.log(res.data);
       this.getInstances();
     });
 
   }
 
   filterInstances = () => {
-
     let path = "/renting/";
-
-    //console.log(this.filter)
 
     if (this.filter.movie) {
       this.getInstancesByMovieID(parseInt(this.filter.movie), this.filter.available);
       path += "?movie=" + this.filter.movie;
       if (this.filter.available != undefined) {
         if (this.filter.available) {
-          path += "&available=true"
+          path += "&available=true";
         }
         else {
-          path += "&available=false"
+          path += "&available=false";
         }
       }
     }
@@ -126,10 +119,10 @@ export class RentingComponent implements OnInit {
       this.getAvailable(this.filter.available);
       if (this.filter.available != undefined) {
         if (this.filter.available) {
-          path += "?available=true"
+          path += "?available=true";
         }
         else {
-          path += "?available=false"
+          path += "?available=false";
         }
       }
     }
@@ -140,56 +133,48 @@ export class RentingComponent implements OnInit {
     this.api.listInstancesOfaMovie(id, available).subscribe(
       data => {
         this.availableMovies = data;
-        //console.log(data)
       },
       error => {
-        //console.log(error);
         this.snackbar.open(error.error.detail, 'OK', {
           horizontalPosition: "right",
           verticalPosition: "top",
           duration: 2000
         });
-        //console.log(error);
       }
-    )
+    );
   }
 
   getAllMovies = () => {
     this.movieapi.getAllMovies().subscribe(
       data => {
         this.listOfMovies = data;
-        //console.log(this.listOfMovies);
       },
       error => {
-        //console.log(error);
         this.snackbar.open(error.error.detail, 'OK', {
           horizontalPosition: "right",
           verticalPosition: "top",
           duration: 2000
         });
       }
-    )
+    );
   }
 
   getAvailable = (available: any = undefined) => {
     this.api.listInstances(available).subscribe(
       data => {
         this.availableMovies = data;
-        //console.log(data)
       },
       error => {
-        //console.log(error);
         this.snackbar.open(error.error.detail, 'OK', {
           horizontalPosition: "right",
           verticalPosition: "top",
           duration: 2000
         });
       }
-    )
+    );
   }
 
   editInstance = (movie: MovieInstance) => {
-    //console.log(movie)
     let dialogRef = this.dialog.open(EditComponent, {
       data: {
         movie: movie,
@@ -198,7 +183,6 @@ export class RentingComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(res => {
-      //console.log(res.data);
       this.getInstances();
     });
   }
@@ -211,8 +195,7 @@ export class RentingComponent implements OnInit {
       movie: -1,
       movieTitle: "",
       price: 0
-    }
-    //console.log(movie)
+    };
     let dialogRef = this.dialog.open(EditComponent, {
       data: {
         movie: movie,
@@ -221,7 +204,6 @@ export class RentingComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(res => {
-      //console.log(res.data);
       this.getInstances();
     });
   }

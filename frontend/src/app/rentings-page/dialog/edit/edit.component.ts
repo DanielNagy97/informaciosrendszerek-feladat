@@ -22,7 +22,7 @@ export class EditComponent implements OnInit {
   }
 
   close = () => {
-    this.dialogRef.close()
+    this.dialogRef.close();
   }
 
   submit = () => {
@@ -33,7 +33,7 @@ export class EditComponent implements OnInit {
   closeRenting = (renting: Renting) => {
     this.api.closeRenting(renting).subscribe(
       data => {
-        //console.log(data);
+
       },
       error => {
         this.snackbar.open(error.error.detail, 'OK', {

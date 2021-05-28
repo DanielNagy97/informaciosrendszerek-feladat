@@ -64,13 +64,6 @@ class MovieViewSet(viewsets.ModelViewSet):
     permission_classes = [DjangoModelPermissions]
     authentication_classes = [TokenAuthentication, SessionAuthentication]
 
-    """
-    def list(self, request, *args, **kwargs):
-        movies = Movie.objects.all()
-        serializer = MovieListSerializer(movies, many = True)
-        return Response(serializer.data)
-    """
-
 
 class MovieInstanceViewSet(viewsets.ModelViewSet):
     """
@@ -141,7 +134,6 @@ class RentingViewSet(viewsets.GenericViewSet,
         return rentings.order_by('deadLine')
 
     def create(self, request, *args, **kwargs):
-        print(request.data)
         movieInstance = MovieInstance.objects.get(id=request.data['movieInstance'])
         if(movieInstance.isAvailable):
             # request.data._mutable = True

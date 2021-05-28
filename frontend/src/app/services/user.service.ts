@@ -10,7 +10,7 @@ export class UserService {
   httpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
     "Authorization": "Token " + localStorage.getItem("token")
-  })
+  });
 
   constructor(private http: HttpClient) { }
 

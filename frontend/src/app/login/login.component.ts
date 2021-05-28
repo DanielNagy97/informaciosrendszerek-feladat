@@ -31,11 +31,10 @@ export class LoginComponent implements OnInit {
       data => {
         localStorage.setItem("token", data.token);
         localStorage.setItem("userID", data.id);
-        //console.log(data)
+
         window.location.reload();
       },
       error => {
-        //console.log(error);
         this.snackbar.open(JSON.stringify(error.error), 'OK', {
           horizontalPosition: "right",
           verticalPosition: "top",

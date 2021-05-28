@@ -39,7 +39,6 @@ export class RentingsPageComponent implements OnInit {
     public dialog: MatDialog,
   ) {
     this.route.queryParams.subscribe(params => {
-      //console.log(params);
       this.queryParams = params;
     });
 
@@ -66,11 +65,9 @@ export class RentingsPageComponent implements OnInit {
   getRentings = () => {
     this.api.getAllRentings(this.filter).subscribe(
       data => {
-        //console.log(data);
         this.rentings = data;
       },
       error => {
-        //console.log(error);
         this.snackbar.open(error.error.detail, 'OK', {
           horizontalPosition: "right",
           verticalPosition: "top",
@@ -83,11 +80,9 @@ export class RentingsPageComponent implements OnInit {
   getUserList = () => {
     this.userapi.getAllUser().subscribe(
       data => {
-        //console.log(data);
         this.listOfUsers = data;
       },
       error => {
-        //console.log(error);
         this.snackbar.open(error.error.detail, 'OK', {
           horizontalPosition: "right",
           verticalPosition: "top",
@@ -99,15 +94,14 @@ export class RentingsPageComponent implements OnInit {
 
   filterRentings = () => {
     let path = "/rentings-page/";
-    //console.log(this.filter)
     this.getRentings();
 
     if (this.filter.closed !== undefined) {
       if (this.filter.closed) {
-        path += "?closed=true"
+        path += "?closed=true";
       }
       else {
-        path += "?closed=false"
+        path += "?closed=false";
       }
       if (this.filter.user !== undefined) {
         path += "&user=" + this.filter.user;

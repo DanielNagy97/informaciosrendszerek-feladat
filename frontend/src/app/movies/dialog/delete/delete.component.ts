@@ -33,7 +33,7 @@ export class DeleteComponent implements OnInit {
   deleteMovie = () => {
     this.api.deleteMovie(this.data.id).subscribe(
       data => {
-        //console.log(data);
+        
       },
       error => {
         this.snackbar.open(error.error.detail, 'OK', {
@@ -41,7 +41,6 @@ export class DeleteComponent implements OnInit {
           verticalPosition: "top",
           duration: 2000
         });
-        //console.log(error);
       }
     )
   }

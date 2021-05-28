@@ -11,17 +11,17 @@ export class RentingService {
   httpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
     "Authorization": "Token " + localStorage.getItem("token")
-  })
+  });
 
   constructor(private http: HttpClient) { }
 
   listInstancesOfaMovie(id: number, available: any = undefined): Observable<any> {
     let param = "?movie=" + id;
     if (available == true) {
-      param += "&available=true"
+      param += "&available=true";
     }
     else if (available == false) {
-      param += "&available=false"
+      param += "&available=false";
     }
 
     return this.http.get(this.baseurl + "viewset/movieInstance/" + param,
@@ -31,10 +31,10 @@ export class RentingService {
   listInstances(available: any = undefined): Observable<any> {
     let param = "";
     if (available == true) {
-      param = "?available=true"
+      param = "?available=true";
     }
     else if (available == false) {
-      param += "?available=false"
+      param += "?available=false";
     }
 
     return this.http.get(this.baseurl + "viewset/movieInstance/" + param,
@@ -42,13 +42,13 @@ export class RentingService {
   }
 
   updateInstance(movie: any): Observable<any> {
-    const body = movie
+    const body = movie;
     return this.http.put(this.baseurl + "viewset/movieInstance/" + movie.id + "/",
       body, { headers: this.httpHeaders });
   }
 
   createInstance(movie: any): Observable<any> {
-    const body = movie
+    const body = movie;
     return this.http.post(this.baseurl + "viewset/movieInstance/",
       body, { headers: this.httpHeaders });
   }
@@ -60,22 +60,22 @@ export class RentingService {
 
   rentMovie(newRenting: any): Observable<any> {
     let body = newRenting;
-    body.user = localStorage.getItem("userID")
-    body.deadLine = new Date(body.deadLine).toISOString().substring(0, 10)
-    //console.log(body)
+    body.user = localStorage.getItem("userID");
+    body.deadLine = new Date(body.deadLine).toISOString().substring(0, 10);
+
     return this.http.post(this.baseurl + "viewset/renting/",
       body, { headers: this.httpHeaders });
   }
 
   getAllRentings(filter: any): Observable<any> {
-    let queryParam = ""
+    let queryParam = "";
 
     if (filter.closed !== undefined) {
       if (filter.closed) {
-        queryParam += "?closed=true"
+        queryParam += "?closed=true";
       }
       else {
-        queryParam += "?closed=false"
+        queryParam += "?closed=false";
       }
       if (filter.user !== undefined) {
         queryParam += "&user=" + filter.user;

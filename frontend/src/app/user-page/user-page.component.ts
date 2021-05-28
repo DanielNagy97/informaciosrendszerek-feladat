@@ -31,11 +31,9 @@ export class UserPageComponent implements OnInit {
   ngOnInit(): void {
     this.api.getUserData().subscribe(
       data => {
-        //console.log(data);
         this.user = data;
       },
       error => {
-        //console.log(error);
         this.snackbar.open(error.error.detail, 'OK', {
           horizontalPosition: "right",
           verticalPosition: "top",
